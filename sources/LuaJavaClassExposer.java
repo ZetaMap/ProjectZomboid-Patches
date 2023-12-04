@@ -252,6 +252,20 @@ public class LuaJavaClassExposer {
    public boolean fullApiAccess() {
        return loaded;
    }
+   
+   @LuaMethod(name="exposeClass", global=true)
+   public Class<?> exposeClass(String className) {
+ 	  try { 
+		  Class<?> clazz = Class.forName(className);
+		  zombie.debug.DebugLog.Lua.println("[API Unlocker] [DEBUG] {exposeClass} Exposing " + clazz.toString());
+		  this.exposeLikeJavaByClass(this.environment, this.visitedTypes, clazz); 
+		  return clazz;
+	  } 
+	  catch (Exception e) { zombie.debug.DebugLog.Lua.error(e.toString()); }
+   	  catch (Error e) { e.printStackTrace(); } 
+
+      return null;
+   }
 
    private void loadClasses(java.io.File directory, String packageName) {
 	   if (!packageName.isEmpty()) packageName += ".";
@@ -289,15 +303,7 @@ public class LuaJavaClassExposer {
 			 
 		   
 	       if (file.isDirectory()) loadClasses(file, packageName + name); 
-	       else if (name.endsWith(".class") && !name.contains(" ")) {
-	    	  try { 
-	    		  Class<?> clazz = Class.forName(packageName + name.substring(0, name.length() - 6));
-	    		  zombie.debug.DebugLog.Lua.println("[API Unlocker] [DEBUG] {loadClasses} Exposing " + clazz.toString());
-	    		  this.exposeLikeJavaByClass(this.environment, this.visitedTypes, clazz); 
-	    	  } 
-	    	  catch (Exception e) { zombie.debug.DebugLog.Lua.error(e.toString()); }
-	       	  catch (Error e) { e.printStackTrace(); } 
-	       }
+	       else if (name.endsWith(".class") && !name.contains(" ")) exposeClass(packageName + name.substring(0, name.length() - 6));
 	   }
    }
        

@@ -20,6 +20,14 @@ else
 end
 ```
 
+A method has been created to unlock more java classes, with his path, for lua mods, if needed:
+```lua
+exposeClass("<java class path>")
+-- E.g. exposeClass("java.io.File"), will expose and return the the class File.
+-- Useful for managing files with mods.
+```
+With that, you can literally create your mod or plugin in java, and "import" it in a lua file.
+
 **Note:** Some classes and packages are ignored to avoid errors.
 <details>
   <summary>Ignored things</summary>
