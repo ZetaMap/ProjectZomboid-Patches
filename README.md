@@ -6,10 +6,10 @@ The most use of these patches, is for servers.
 ## API Unlocker
 This patch provide an full access of classes of game to make mods more easely.
 
-To unlock all game api, it's very simple, just copy the file ``LuaJavaClassExposer.class`` to your game/server folder, into folder ``java/se/krka/kahlua/integration/expose/``, and restart te game.<br>
+To unlock all game api, it's very simple, just copy the file ``LuaJavaClassExposer.class`` to your game/server folder, into folder ``java/se/krka/kahlua/integration/expose/``, and restart the game.<br>
 You can also make a backup by renaming the old file with the ``.bak`` extension. (if a problem appears in future)
 
-Also to know if a game is unlocked, use write a test like this, in your mod file:
+Also to know if a game is unlocked, write a test like this, in your mod file:
 ```lua
 if fullApiAccess then
     -- Do things when we have access to entire game classes
@@ -24,26 +24,31 @@ end
 <details>
   <summary>Ignored things</summary>
 
-  Ignored packages: <br>
-    - org.lwjglx.opengl <br>
-    - org.junit <br>
-    - astar.tests <br>
-    - zombie.iso <br>
-    - zombie.core.opengl <br>
+  **Ignored packages:**
+  <ul>
+    <li>org.lwjglx.opengl</li>
+    <li>org.junit</li>
+    <li>astar.tests</li>
+    <li>zombie.iso</li>
+    <li>zombie.core.opengl</li>
+  </ul>
 
-  Ignored classes: <br>
-    - KahluaConverterManager <br>
-    - LuaCompiler <br>
-    - ActionContext <br>
-    - PacketTypes <br>
-    - CustomPerks <br>
-    - ItemPickerJava <br>
-    - GameWindow <br>
-    - ServerGUI <br>
-    - MainScreenState <br>
-    - ModelManager <br>
-    - SpawnRegions <br>
-    - \*Test\*        *(all classes that contains the word "test")* <br>
+
+  **Ignored classes:**
+  <ul>
+    <li>KahluaConverterManager</li>
+    <li>LuaCompiler</li>
+    <li>ActionContext</li>
+    <li>PacketTypes</li>
+    <li>CustomPerks</li>
+    <li>ItemPickerJava</li>
+    <li>GameWindow</li>
+    <li>ServerGUI</li>
+    <li>MainScreenState</li>
+    <li>ModelManager</li>
+    <li>SpawnRegions</li>
+    <li>\*Test\*        *(all classes that contains the word "test")*</li>
+  </ul>
 </details>
 
 ## Pluginator
