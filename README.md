@@ -73,7 +73,7 @@ It is therefore not possible to reload the plugins with the ``reloadlua <filenam
 
 
 ## Disclaimer
-I never played or paid the game, I just reverse engineered a long time to do these patches. <br>
+I never played the game, I just reverse engineered a long time to do these patches. <br>
 So don't blame me if any problems arise after installing this. I am not responsible for any damage caused by its use.
 
 I created these tools because I wanted a plugin to automatically shut down my friends' server when no one is connected, and I noticed that the API provided for modders was really poor. <br>
