@@ -58,7 +58,7 @@ With that, you can literally create your mod or plugin in java, and "import" it 
 </details>
 
 ## Pluginator
-This patch allows you to load plugins. A plugin is a mod but only required for the server or client. <br>
+This patch allows you to load plugins. A plugin is a mod but only required for one part, the server or the client, and not required for the other side. <br>
 Common use is for servers, to be able to execute code only on the server side (like synchronization, or security) or not to show what the server is doing to clients.
 
 To install the pluginator, it's very simple, just copy the file ``LuaManager.class`` to your game/server folder, into folder ``java/zombie/Lua/``, and restart the game. <br>
