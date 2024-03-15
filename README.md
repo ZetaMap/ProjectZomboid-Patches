@@ -13,10 +13,8 @@ Also to know if a game is unlocked, write a test like this, in your mod file:
 ```lua
 if fullApiAccess then
     -- Do things when we have access to entire game classes
-    -- code....
 else
     -- Do things when game is not patched
-    -- code....
 end
 ```
 
