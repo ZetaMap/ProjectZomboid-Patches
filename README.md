@@ -1,15 +1,15 @@
 # Project Zomboid Patches
-Patches for Project Zomboid, usefull for modders. <br>
-The most use of these patches, is for servers.
+Patches for Project Zomboid, usefull for modders.
 
 
 ## API Unlocker
-This patch provide an full access of classes of game to make mods more easely.
+This patch provide a full access of classes of game, to make mods more easely.
 
-To unlock all game api, it's very simple, just copy the file ``LuaJavaClassExposer.class`` to your game/server folder, into folder ``java/se/krka/kahlua/integration/expose/``, and restart the game.<br>
-You can also make a backup by renaming the old file with the ``.bak`` extension. (if a problem appears in future)
+To unlock all game api: 
+ * backup the old file by adding the ``.bak`` extension.
+ * copy the file ``LuaJavaClassExposer.class`` into the folder ``java/se/krka/kahlua/integration/expose/`` (or ``se/krka/kahlua/integration/expose/`` for client)
 
-Also to know if a game is unlocked, write a test like this, in your mod file:
+To know if a game api is unlocked, write a simple test, like this, in your mod file:
 ```lua
 if fullApiAccess then
     -- Do things when we have access to entire game classes
@@ -18,13 +18,13 @@ else
 end
 ```
 
-A method has been created to unlock more java classes, with his path, for lua mods, if needed:
+A method has been created to unlock more classes, with his path:
 ```lua
 exposeClass("<java class path>")
--- E.g. exposeClass("java.io.File"), will expose and return the the class File.
+-- E.g. exposeClass("java.io.File"), will expose and return the the class 'File'.
 -- Useful for managing files with mods.
 ```
-With that, you can literally create your mod or plugin in java, and "import" it in a lua file.
+With this you can, for example, create your mod in java, and "import" it into a lua file, by exposing its main class and calling the main function.
 
 **Note:** Some classes and packages are ignored to avoid errors.
 <details>
@@ -53,28 +53,35 @@ With that, you can literally create your mod or plugin in java, and "import" it 
     <li>MainScreenState</li>
     <li>ModelManager</li>
     <li>SpawnRegions</li>
-    <li>\*Test\*        *(all classes that contains the word "test")*</li>
+    <li>test  (all classes that contains the word "test")</li>
   </ul>
 </details>
 
+
 ## Pluginator
-This patch allows you to load plugins. A plugin is a mod but only required for one part, the server or the client, and not required for the other side. <br>
-Common use is for servers, to be able to execute code only on the server side (like synchronization, or security) or not to show what the server is doing to clients.
+This patch allows you to load plugins. A plugin is a mod but only required for one side, the server or the client. <br>
+Common use is for servers, to be able to run private tasks, like players syncs or security stuff, without the client having the mod for it.
 
-To install the pluginator, it's very simple, just copy the file ``LuaManager.class`` to your game/server folder, into folder ``java/zombie/Lua/``, and restart the game. <br>
-You can also make a backup by renaming the old file with the ``.bak`` extension. (if a problem appears in future)
+To install the pluginator:
+ * backup the old file by adding the ``.bak`` extension.
+ * copy the file ``LuaManager.class`` into the folder ``java/zombie/Lua/`` (or ``zombie/Lua/`` for client)
 
-Plugins must be placed in folder ``media/lua/plugins/``, if it doesn't exist, create it.
+Plugins must be placed in folder ``media/lua/plugins/``. If the folder doesn't exist, create it.
 
-**Note:** This tool makes the server believe that the plugins that have been loaded, have never been loaded. <br>
-It is therefore not possible to reload the plugins with the ``reloadlua <filename>`` command, so you will have to restart the server for this.
+**Note:** This tool makes the server believe that the plugins have never been loaded. <br>
+It is therefore not possible to reload the plugins with the ``reloadlua <filename>`` command, you will need to restart the server for this.
 
 
 ## Disclaimer
-I never played the game, I just reverse engineered a long time to do these patches. <br>
+I never played the game, I just reverse engineered a lonnng time to do these patches. <br>
 So don't blame me if any problems arise after installing this. I am not responsible for any damage caused by its use.
 
-I created these tools because I wanted a plugin to automatically shut down my friends' server when no one is connected, and I noticed that the API provided for modders was really poor. <br>
+Also, I will not provide the method used to decompile and recompile the game files, to avoid problems with this repository. <br>
+So do your own research.
+
+
+## Why these patches?
+Because I wanted a plugin to automatically shut down my friends' server when no one is connected, and I noticed that the API provided for modders was really poor. <br>
 So I recompiled some classes to make modified versions.
 
 And my conclusion is that the game is really poorly coded... Have a nice days PZ devs... =)
